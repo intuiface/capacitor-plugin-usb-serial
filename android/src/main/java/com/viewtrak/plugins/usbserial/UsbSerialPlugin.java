@@ -1,17 +1,16 @@
 package com.viewtrak.plugins.usbserial;
 
 import android.hardware.usb.UsbDevice;
-
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
-
 import org.json.JSONArray;
 
 @CapacitorPlugin(name = "UsbSerial")
 public class UsbSerialPlugin extends Plugin implements Callback {
+
     private UsbSerial implementation;
 
     @Override
@@ -37,29 +36,21 @@ public class UsbSerialPlugin extends Plugin implements Callback {
         try {
             UsbSerialOptions settings = new UsbSerialOptions();
 
-            if (call.hasOption("deviceId"))
-                settings.deviceId = call.getInt("deviceId");
+            if (call.hasOption("deviceId")) settings.deviceId = call.getInt("deviceId");
 
-            if (call.hasOption("portNum"))
-                settings.portNum = call.getInt("portNum");
+            if (call.hasOption("portNum")) settings.portNum = call.getInt("portNum");
 
-            if (call.hasOption("baudRate"))
-                settings.baudRate = call.getInt("baudRate");
+            if (call.hasOption("baudRate")) settings.baudRate = call.getInt("baudRate");
 
-            if (call.hasOption("dataBits"))
-                settings.dataBits = call.getInt("dataBits");
+            if (call.hasOption("dataBits")) settings.dataBits = call.getInt("dataBits");
 
-            if (call.hasOption("stopBits"))
-                settings.stopBits = call.getInt("stopBits");
+            if (call.hasOption("stopBits")) settings.stopBits = call.getInt("stopBits");
 
-            if (call.hasOption("parity"))
-                settings.parity = call.getInt("parity");
+            if (call.hasOption("parity")) settings.parity = call.getInt("parity");
 
-            if (call.hasOption("dtr"))
-                settings.dtr = call.getBoolean("dtr");
+            if (call.hasOption("dtr")) settings.dtr = call.getBoolean("dtr");
 
-            if (call.hasOption("rts"))
-                settings.rts = call.getBoolean("rts");
+            if (call.hasOption("rts")) settings.rts = call.getBoolean("rts");
 
             implementation.openSerial(settings);
             call.resolve(new JSObject());
@@ -101,17 +92,17 @@ public class UsbSerialPlugin extends Plugin implements Callback {
         }
     }
 
-//    @Override
-//    protected void handleOnResume() {
-//        super.handleOnResume();
-//        implementation.onResume();
-//    }
-//
-//    @Override
-//    protected void handleOnPause() {
-//        implementation.onPause();
-//        super.handleOnPause();
-//    }
+    //    @Override
+    //    protected void handleOnResume() {
+    //        super.handleOnResume();
+    //        implementation.onResume();
+    //    }
+    //
+    //    @Override
+    //    protected void handleOnPause() {
+    //        implementation.onPause();
+    //        super.handleOnPause();
+    //    }
 
     @Override
     public void log(String TAG, String text) {

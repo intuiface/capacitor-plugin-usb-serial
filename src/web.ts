@@ -20,7 +20,7 @@ export class UsbSerialWeb extends WebPlugin implements UsbSerialPlugin {
   }
   addListener(
     eventName: 'log' | 'connected' | 'attached' | 'detached' | 'data' | 'error',
-    listenerFunc: (data: any) => void
+    listenerFunc: (data: any) => void,
   ) {
     listenerFunc({});
     return Promise.reject(`Method '${eventName}' not implemented.`) as any;

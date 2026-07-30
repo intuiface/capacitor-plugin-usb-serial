@@ -3,6 +3,7 @@ package com.viewtrak.plugins.usbserial;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 
 public class UsbSerialOptions {
+
     public int deviceId = 0;
     public int portNum = 0;
     public int baudRate = 9600;
