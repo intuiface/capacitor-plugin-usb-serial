@@ -1,6 +1,6 @@
 {
   "name": "@intuiface/capacitor-plugin-usb-serial",
-  "version": "0.0.18",
+  "version": "8.0.0",
   "description": "This plugin can be used for reading data from other device over the usb channel",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
