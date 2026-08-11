@@ -1,18 +1,16 @@
 package com.viewtrak.plugins.usbserial;
 
 import android.hardware.usb.UsbDevice;
-
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
-
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 public class Utils {
 
     static class DeviceItem {
+
         UsbDevice device;
         int port;
         UsbSerialDriver driver;
@@ -25,11 +23,10 @@ public class Utils {
     }
 
     public static JSONArray deviceListToJsonConvert(List<DeviceItem> list) {
-
-        JSONArray jsonArray = new JSONArray();// /ItemDetail jsonArray
+        JSONArray jsonArray = new JSONArray(); // /ItemDetail jsonArray
 
         for (int i = 0; i < list.size(); i++) {
-            JSONObject jsonObject = new JSONObject();// /sub Object
+            JSONObject jsonObject = new JSONObject(); // /sub Object
 
             try {
                 JSONObject device = new JSONObject();
@@ -46,7 +43,6 @@ public class Utils {
                 e.printStackTrace();
             }
         }
-        return  jsonArray;
+        return jsonArray;
     }
-
 }

@@ -1,11 +1,11 @@
-# usb-serial-plugin
+# @intuiface/capacitor-plugin-usb-serial
 
 This plugin can be used for reading data from other device over the usb channel
 
 ## Install
 
 ```bash
-npm install usb-serial-plugin
+npm install @intuiface/capacitor-plugin-usb-serial
 npx cap sync
 ```
 

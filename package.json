@@ -1,6 +1,6 @@
 {
-  "name": "usb-serial-plugin",
-  "version": "0.0.17",
+  "name": "@intuiface/capacitor-plugin-usb-serial",
+  "version": "0.0.18",
   "description": "This plugin can be used for reading data from other device over the usb channel",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -12,16 +12,16 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "UsbSerialPlugin.podspec"
+    "IntuifaceCapacitorPluginUsbSerial.podspec"
   ],
-  "author": "asad96",
+  "author": "Intuiface",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CoooWeee/capacitor-plugin-usb-serial.git"
+    "url": "git+https://github.com/intuiface/capacitor-plugin-usb-serial.git"
   },
   "bugs": {
-    "url": "https://github.com/CoooWeee/capacitor-plugin-usb-serial/issues"
+    "url": "https://github.com/intuiface/capacitor-plugin-usb-serial/issues"
   },
   "keywords": [
     "capacitor",
@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin && cd ..",
+    "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin -destination generic/platform=iOS && cd ..",
     "verify:android": "cd android && ./gradlew clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
@@ -43,19 +43,21 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "android:fix": "cd android && ./gradlew clean && ./gradlew wrapper --gradle-version 8.11.1 && ./gradlew && cd .."
+    "android:fix": "cd android && ./gradlew clean && ./gradlew wrapper --gradle-version 8.14.3 && ./gradlew && cd ..",
+    "prepare": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^7.1.0",
-    "@capacitor/cli": "^7.1.0",
-    "@capacitor/core": "^7.1.0",
-    "@capacitor/docgen": "^0.3.0",
-    "@capacitor/ios": "^7.1.0",
-    "@ionic/eslint-config": "^0.4.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/docgen": "^0.3.1",
+    "@capacitor/ios": "^8.0.0",
+    "@eslint/js": "^9.0.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^2.0.0",
-    "@types/node": "^22.13.10",
+    "@types/node": "^24.13.3",
     "@typescript-eslint/eslint-plugin": "8.26.1",
+    "@typescript-eslint/parser": "8.26.1",
     "eslint": "^9.22.0",
     "prettier": "^3.5.3",
     "prettier-plugin-java": "^2.6.7",
@@ -65,13 +67,10 @@
     "typescript": "~5.5.4"
   },
   "peerDependencies": {
-    "@capacitor/core": "^7.1.0"
+    "@capacitor/core": ">=8.0.0"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
-  "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
-  },
   "capacitor": {
     "ios": {
       "src": "ios"

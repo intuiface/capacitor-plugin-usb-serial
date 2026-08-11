@@ -23,9 +23,8 @@ import java.security.InvalidParameterException;
  * only.
  */
 public class HexDump {
-    private final static char[] HEX_DIGITS = {
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
-    };
+
+    private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
     public static String dumpHexString(byte[] array) {
         return dumpHexString(array, 0, array.length);
@@ -59,7 +58,7 @@ public class HexDump {
             line[lineIndex++] = b;
         }
 
-        for (int i = 0; i < (line.length - lineIndex); i++) {
+        for (int i = 0; i < line.length - lineIndex; i++) {
             result.append("   ");
         }
         for (int i = 0; i < lineIndex; i++) {
@@ -129,12 +128,9 @@ public class HexDump {
     }
 
     private static int toByte(char c) {
-        if (c >= '0' && c <= '9')
-            return (c - '0');
-        if (c >= 'A' && c <= 'F')
-            return (c - 'A' + 10);
-        if (c >= 'a' && c <= 'f')
-            return (c - 'a' + 10);
+        if (c >= '0' && c <= '9') return c - '0';
+        if (c >= 'A' && c <= 'F') return c - 'A' + 10;
+        if (c >= 'a' && c <= 'f') return c - 'a' + 10;
 
         throw new InvalidParameterException("Invalid hex char '" + c + "'");
     }
@@ -144,8 +140,7 @@ public class HexDump {
         byte[] buffer = new byte[length / 2];
 
         for (int i = 0; i < length; i += 2) {
-            buffer[i / 2] = (byte) ((toByte(hexString.charAt(i)) << 4) | toByte(hexString
-                    .charAt(i + 1)));
+            buffer[i / 2] = (byte) ((toByte(hexString.charAt(i)) << 4) | toByte(hexString.charAt(i + 1)));
         }
 
         return buffer;
